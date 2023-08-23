@@ -41,15 +41,8 @@ function myCountdown() {
 
   let timerSeconds = parseInt(timeLeft / second);
   timeLeft = timeLeft - timerSeconds * second;
-  counterSecond.innerHTML = timerSeconds;
+  clock(timerSeconds, counterSecond);
 }
-
-// function counterTimeLeft() {
-
-// }
-
-// let doubleCheck = new Date(msNow);
-// console.log(doubleCheck);
 
 // !! to create the actual countdown
 
@@ -70,3 +63,13 @@ function revision() {
 //   const d = new Date();
 //   console.log(d);
 // }
+
+// * function to generate clock numbers
+
+function clock(time, type) {
+  if (time < 10) {
+    type.innerHTML = "0" + time;
+  } else {
+    type.innerHTML = time;
+  }
+}
