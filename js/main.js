@@ -14,8 +14,7 @@ const hour = minute * 60;
 const day = hour * 24;
 
 // get date of the revision
-// const revisionDate = new Date("August 24, 2023 09:30:00");
-const revisionDate = new Date("August 23, 2023 17:37:20");
+const revisionDate = new Date("August 24, 2023 09:30:00");
 const msRevision = revisionDate.getTime();
 
 // get date of today
@@ -32,8 +31,13 @@ let countdown = setInterval(myCountdown, 1000);
 // * function for the revision of the exercise
 
 function revision() {
-  alert("It is time!");
-  clearInterval(countdown);
+  if (timeLeft > 0) {
+    alert("It is time for the revision!");
+    clearInterval(countdown);
+  } else {
+    alert("You are late!");
+    clearInterval(countdown);
+  }
 }
 
 // * function for the countdown
@@ -44,11 +48,7 @@ function myCountdown() {
   msNow = todayDate.getTime();
 
   timeLeft = msRevision - msNow;
-  console.log(timeLeft);
 
-  //   if (timeLeft < 100) {
-  //     revision();
-  //   } else {
   const timerDays = parseInt(timeLeft / day);
   timeLeft = timeLeft - timerDays;
   clock(timerDays, counterDay);
@@ -64,7 +64,6 @@ function myCountdown() {
   let timerSeconds = parseInt(timeLeft / second);
   timeLeft = timeLeft - timerSeconds * second;
   clock(timerSeconds, counterSecond);
-  //   }
 }
 
 // * function to generate clock numbers
@@ -76,8 +75,3 @@ function clock(time, type) {
     type.innerHTML = time;
   }
 }
-
-//   let timerCountdown = msRevision - msNow;
-//   console.log(timerCountdown);
-
-// !! at this moment for setTimeout to work it will need years
