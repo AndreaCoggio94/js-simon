@@ -15,38 +15,34 @@ const day = hour * 24;
 
 // get date of the revision
 const revisionDate = new Date("August 24, 2023 09:30:00");
+const msRevision = revisionDate.getTime();
+// console.log("I ms della revisione sono " + msRevision);
 
-// get date of today
-const todayDate = new Date();
+let countdown = setInterval(myCountdown, 1000);
 
-let msRevision = revisionDate.getTime();
-console.log(msRevision);
+function myCountdown() {
+  // get date of today
+  const todayDate = new Date();
+  let msNow = todayDate.getTime();
 
-let msNow = todayDate.getTime();
-console.log("ora è così " + msNow);
+  let timeLeft = msRevision - msNow;
 
-let timeLeft = msRevision - msNow;
-console.log(timeLeft);
+  const timerDays = parseInt(timeLeft / day);
+  timeLeft = timeLeft - timerDays;
+  counterDay.innerHTML = timerDays;
 
-let timerDays = parseInt(timeLeft / day);
-timeLeft = timeLeft - timerDays;
-console.log(timerDays);
-console.log(timeLeft);
+  const timerHours = parseInt(timeLeft / hour);
+  timeLeft = timeLeft - timerHours * hour;
+  counterHour.innerHTML = timerHours;
 
-let timerHours = parseInt(timeLeft / hour);
-timeLeft = timeLeft - timerHours * hour;
-console.log(timerHours);
-console.log(timeLeft);
+  let timerMinutes = parseInt(timeLeft / minute);
+  timeLeft = timeLeft - timerMinutes * minute;
+  counterMinute.innerHTML = timerMinutes;
 
-let timerMinutes = parseInt(timeLeft / minute);
-timeLeft = timeLeft - timerMinutes * minute;
-console.log(timerMinutes);
-console.log(timeLeft);
-
-let timerSeconds = parseInt(timeLeft / second);
-timeLeft = timeLeft - timerSeconds * second;
-console.log(timerSeconds);
-console.log(timeLeft);
+  let timerSeconds = parseInt(timeLeft / second);
+  timeLeft = timeLeft - timerSeconds * second;
+  counterSecond.innerHTML = timerSeconds;
+}
 
 // function counterTimeLeft() {
 
@@ -57,14 +53,14 @@ console.log(timeLeft);
 
 // !! to create the actual countdown
 
-// setTimeout(revision, 3000);
+setTimeout(revision, msRevision);
 
 // * function for the revision of the exercise
 
-// function revision() {
-//   console.log("It is time!");
-//   clearInterval(countdown);
-// }
+function revision() {
+  console.log("It is time!");
+  clearInterval(countdown);
+}
 
 // * function for the countdown
 
