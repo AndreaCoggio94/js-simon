@@ -15,10 +15,21 @@ const day = hour * 24;
 
 // get date of the revision
 const revisionDate = new Date("August 24, 2023 09:30:00");
+
 const msRevision = revisionDate.getTime();
-// console.log("I ms della revisione sono " + msRevision);
 
 let countdown = setInterval(myCountdown, 1000);
+
+setTimeout(revision, msRevision);
+
+// * function for the revision of the exercise
+
+function revision() {
+  alert("It is time!");
+  clearInterval(countdown);
+}
+
+// * function for the countdown
 
 function myCountdown() {
   // get date of today
@@ -27,42 +38,26 @@ function myCountdown() {
 
   let timeLeft = msRevision - msNow;
 
-  const timerDays = parseInt(timeLeft / day);
-  timeLeft = timeLeft - timerDays;
-  counterDay.innerHTML = timerDays;
+  if (timeLeft < 0) {
+    revision();
+  } else {
+    const timerDays = parseInt(timeLeft / day);
+    timeLeft = timeLeft - timerDays;
+    clock(timerDays, counterDay);
 
-  const timerHours = parseInt(timeLeft / hour);
-  timeLeft = timeLeft - timerHours * hour;
-  counterHour.innerHTML = timerHours;
+    const timerHours = parseInt(timeLeft / hour);
+    timeLeft = timeLeft - timerHours * hour;
+    clock(timerHours, counterHour);
 
-  let timerMinutes = parseInt(timeLeft / minute);
-  timeLeft = timeLeft - timerMinutes * minute;
-  counterMinute.innerHTML = timerMinutes;
+    let timerMinutes = parseInt(timeLeft / minute);
+    timeLeft = timeLeft - timerMinutes * minute;
+    clock(timerMinutes, counterMinute);
 
-  let timerSeconds = parseInt(timeLeft / second);
-  timeLeft = timeLeft - timerSeconds * second;
-  clock(timerSeconds, counterSecond);
+    let timerSeconds = parseInt(timeLeft / second);
+    timeLeft = timeLeft - timerSeconds * second;
+    clock(timerSeconds, counterSecond);
+  }
 }
-
-// !! to create the actual countdown
-
-setTimeout(revision, msRevision);
-
-// * function for the revision of the exercise
-
-function revision() {
-  console.log("It is time!");
-  clearInterval(countdown);
-}
-
-// * function for the countdown
-
-// let countdown = setInterval(myTimer, 1000);
-
-// function myTimer() {
-//   const d = new Date();
-//   console.log(d);
-// }
 
 // * function to generate clock numbers
 
