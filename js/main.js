@@ -15,8 +15,17 @@ const day = hour * 24;
 
 // get date of the revision
 // const revisionDate = new Date("August 24, 2023 09:30:00");
-const revisionDate = new Date("August 23, 2023 17:32:10");
+const revisionDate = new Date("August 23, 2023 17:37:20");
 const msRevision = revisionDate.getTime();
+
+// get date of today
+let todayDate = new Date();
+let msNow = todayDate.getTime();
+
+// missing ms till the revision
+let timeLeft = msRevision - msNow;
+
+setTimeout(revision, timeLeft);
 
 let countdown = setInterval(myCountdown, 1000);
 
@@ -31,31 +40,31 @@ function revision() {
 
 function myCountdown() {
   // get date of today
-  const todayDate = new Date();
-  let msNow = todayDate.getTime();
+  todayDate = new Date();
+  msNow = todayDate.getTime();
 
-  let timeLeft = msRevision - msNow;
+  timeLeft = msRevision - msNow;
   console.log(timeLeft);
 
-  if (timeLeft < 100) {
-    revision();
-  } else {
-    const timerDays = parseInt(timeLeft / day);
-    timeLeft = timeLeft - timerDays;
-    clock(timerDays, counterDay);
+  //   if (timeLeft < 100) {
+  //     revision();
+  //   } else {
+  const timerDays = parseInt(timeLeft / day);
+  timeLeft = timeLeft - timerDays;
+  clock(timerDays, counterDay);
 
-    const timerHours = parseInt(timeLeft / hour);
-    timeLeft = timeLeft - timerHours * hour;
-    clock(timerHours, counterHour);
+  const timerHours = parseInt(timeLeft / hour);
+  timeLeft = timeLeft - timerHours * hour;
+  clock(timerHours, counterHour);
 
-    let timerMinutes = parseInt(timeLeft / minute);
-    timeLeft = timeLeft - timerMinutes * minute;
-    clock(timerMinutes, counterMinute);
+  let timerMinutes = parseInt(timeLeft / minute);
+  timeLeft = timeLeft - timerMinutes * minute;
+  clock(timerMinutes, counterMinute);
 
-    let timerSeconds = parseInt(timeLeft / second);
-    timeLeft = timeLeft - timerSeconds * second;
-    clock(timerSeconds, counterSecond);
-  }
+  let timerSeconds = parseInt(timeLeft / second);
+  timeLeft = timeLeft - timerSeconds * second;
+  clock(timerSeconds, counterSecond);
+  //   }
 }
 
 // * function to generate clock numbers
@@ -72,4 +81,3 @@ function clock(time, type) {
 //   console.log(timerCountdown);
 
 // !! at this moment for setTimeout to work it will need years
-//   setTimeout(revision, timerCountdown);
