@@ -14,16 +14,11 @@ const hour = minute * 60;
 const day = hour * 24;
 
 // get date of the revision
-const revisionDate = new Date("August 24, 2023 09:30:00");
-
+// const revisionDate = new Date("August 24, 2023 09:30:00");
+const revisionDate = new Date("August 23, 2023 17:32:10");
 const msRevision = revisionDate.getTime();
 
-// get missing milliseconds to the date
-
 let countdown = setInterval(myCountdown, 1000);
-
-// !! at this moment for setTimeout to work it will need years
-setTimeout(revision, msRevision);
 
 // * function for the revision of the exercise
 
@@ -40,8 +35,9 @@ function myCountdown() {
   let msNow = todayDate.getTime();
 
   let timeLeft = msRevision - msNow;
+  console.log(timeLeft);
 
-  if (timeLeft < 0) {
+  if (timeLeft < 100) {
     revision();
   } else {
     const timerDays = parseInt(timeLeft / day);
@@ -71,3 +67,9 @@ function clock(time, type) {
     type.innerHTML = time;
   }
 }
+
+//   let timerCountdown = msRevision - msNow;
+//   console.log(timerCountdown);
+
+// !! at this moment for setTimeout to work it will need years
+//   setTimeout(revision, timerCountdown);
