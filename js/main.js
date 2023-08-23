@@ -18,8 +18,11 @@ const revisionDate = new Date("August 24, 2023 09:30:00");
 
 const msRevision = revisionDate.getTime();
 
+// get missing milliseconds to the date
+
 let countdown = setInterval(myCountdown, 1000);
 
+// !! at this moment for setTimeout to work it will need years
 setTimeout(revision, msRevision);
 
 // * function for the revision of the exercise
